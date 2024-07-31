@@ -9,24 +9,30 @@ import (
 
 // FindComments is a function to find comments
 func (s *CommentService) FindComments(ctx context.Context, in *pb.CommentRequest) (*pb.CommentList, error) {
-	if in.StoryId != "" {
+	if in.StoryId == "" {
 		return nil, errors.New("story_id is required")
 	}
 
-	// hit usecase
+	comments, err := s.commentUsecase.FindComments(in.StoryId, "postgres")
+	if err != nil {
+		return nil, err
+	}
+
+	var commentPbs []*pb.Comment
+
+	for _, comment := range comments {
+		commentPb := &pb.Comment{
+			Id:        comment.Id,
+			StoryId:   comment.StoryId,
+			Content:   comment.Content,
+			CreatedAt: comment.CreatedAt,
+			UpdatedAt: comment.UpdatedAt,
+		}
+
+		commentPbs = append(commentPbs, commentPb)
+	}
 
 	return &pb.CommentList{
-		Comments: []*pb.Comment{
-			{
-				Id:      "1",
-				StoryId: "1",
-				Content: "This story is amazing",
-			},
-			{
-				Id:      "2",
-				StoryId: "1",
-				Content: "Not my cup of tea",
-			},
-		},
+		Comments: commentPbs,
 	}, nil
 }
