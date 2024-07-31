@@ -4,7 +4,7 @@ import (
 	"context"
 	"errors"
 
-	pb "github.com/kodinggo/pb/comment"
+	pb "github.com/kodinggo/comment-service-gb1/pb/comment"
 )
 
 // FindComments is a function to find comments

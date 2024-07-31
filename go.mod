@@ -1,4 +1,4 @@
-module github.com/kodinggo
+module github.com/kodinggo/comment-service-gb1
 
 go 1.21.4
 

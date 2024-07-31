@@ -4,8 +4,8 @@ import (
 	"log"
 	"net"
 
-	grpcSvc "github.com/kodinggo/internal/delivery/grpc"
-	pb "github.com/kodinggo/pb/comment"
+	grpcSvc "github.com/kodinggo/comment-service-gb1/internal/delivery/grpc"
+	pb "github.com/kodinggo/comment-service-gb1/pb/comment"
 	"google.golang.org/grpc"
 )
 

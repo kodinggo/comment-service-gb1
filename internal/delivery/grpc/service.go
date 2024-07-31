@@ -1,7 +1,7 @@
 package grpc
 
 import (
-	pb "github.com/kodinggo/pb/comment"
+	pb "github.com/kodinggo/comment-service-gb1/pb/comment"
 )
 
 type CommentService struct {
